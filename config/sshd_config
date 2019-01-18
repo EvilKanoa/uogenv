@@ -1,0 +1,4 @@
+ChallengeResponseAuthentication no
+PrintMotd no
+Subsystem sftp /usr/lib/openssh/sftp-server
+
