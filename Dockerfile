@@ -16,8 +16,8 @@ RUN apt-get update -y \
 		sudo \
 	&& sync-available \
 	&& dpkg --clear-selections \
-	&& echo "SETTING SELECTIONS" && dpkg --set-selections < /usr/local/bin/dpkg-selections \
-	&& echo "INSTALLING SELECTIONS" && apt-get dselect-upgrade -y
+	&& dpkg --set-selections < /usr/local/bin/dpkg-selections \
+	&& apt-get dselect-upgrade -y
 
 # copy in config scripts
 COPY config/ssh_config /etc/ssh/ssh_config

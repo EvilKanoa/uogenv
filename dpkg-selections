@@ -40,8 +40,6 @@ ca-certificates-java                            install
 chromium                                        install
 cmake                                           install
 cmake-data                                      install
-console-setup                                   install
-console-setup-linux                             install
 coreutils                                       install
 cpio                                            install
 cpp                                             install
