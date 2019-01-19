@@ -14,13 +14,6 @@ No matter what course you're in, if it involves programming, you'll probably hav
 ```sh
 docker run -p CONTAINER_PORT:22 -d -v HOST_SHARED_FOLDER:/home/student/shared evilkanoa/uogenv:latest
 ```
-```sh
-docker run \
-	-p CONTAINER_PORT:22 \
-	-d \
-	-v HOST_SHARED_FOLDER:/home/student/shared \
-	evilkanoa/uogenv:latest
-```
 > where `CONTAINER_PORT` is the port that should be binded on the host machine for ssh access and `HOST_SHARED_FOLDER` is a folder on the host computer that should be accessible from within the container. 
 
 2. Connect to the uogenv container using: `ssh student@localhost -p CONTAINER_PORT` with password `student`. 
