@@ -2,12 +2,19 @@
 FROM debian:9.6
 
 # image metadata
-LABEL maintainer="kanoa@kanoa.ca"
+LABEL maintainer="EvilKanoa <kanoa@kanoa.ca>"
+
+# setup install env variables
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_FRONTEND noninteractive
+ENV TERM xterm
 
 # copy in required files for dep install
-COPY dpkg-selections /usr/local/bin/dpkg-selections
+COPY config/dpkg-selections /usr/local/bin/dpkg-selections
+COPY config/keyboard /etc/default/keyboard
+COPY config/console-setup /etc/default/console-setup
 
-# install deps
+# install depsi
 RUN apt-get update -y \
 	&& apt-get install -y apt-utils \
 	&& apt-get install -y \
@@ -17,13 +24,13 @@ RUN apt-get update -y \
 	&& sync-available \
 	&& dpkg --clear-selections \
 	&& dpkg --set-selections < /usr/local/bin/dpkg-selections \
-	&& apt-get dselect-upgrade -y
+	&& apt-get dselect-upgrade -y 
 
 # copy in config scripts
 COPY config/ssh_config /etc/ssh/ssh_config
 COPY config/sshd_config /etc/ssh/sshd_config
-COPY config/user.sh /usr/local/bin/user.sh
-COPY config/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY script/user.sh /usr/local/bin/user.sh
+COPY script/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # run config scripts
 RUN chmod +x /usr/local/bin/user.sh
