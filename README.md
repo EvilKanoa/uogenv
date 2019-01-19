@@ -16,7 +16,7 @@ docker run -p {CONTAINER_PORT}:22 -d -v {HOST_SHARED_FOLDER}:/home/student/share
 ```
 > where `CONTAINER_PORT` is the port that should be binded on the host machine for ssh access and `HOST_SHARED_FOLDER` is a folder on the host computer that should be accessible from within the container. 
 
-2. Connect to the uogenv container using: `ssh student@localhost -p CONTAINER_PORT` with password `student`. 
+2. Connect to the uogenv container using: `ssh student@localhost -p {CONTAINER_PORT}` with password `student`. 
 
 3. You can now expect all the tools that exist for the UoG servers and you can find your host files within `~/shared`.
 
